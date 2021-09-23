@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/layout/activity_app_maps.xml" value="0.26510416666666664" />
         <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/layout/activity_bolo_cenoura.xml" value="0.34556159420289856" />
         <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/layout/activity_informacoes_cakes.xml" value="0.33" />
         <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/layout/activity_mapa_app.xml" value="0.33" />
+        <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/layout/activity_segundatela.xml" value="0.26510416666666664" />
         <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/layout/activity_sensor_temp.xml" value="0.3125" />
         <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
         <entry key="..\:/Desktop/Trabalho ETEC 2ADS/PAM/Receita-de-Bolo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3828125" />

@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.receitabolo.databinding.ActivityAppMapsBinding;
+
 public class InformacoesCakes extends AppCompatActivity {
 
     private ImageView imgWeb;
@@ -64,7 +66,11 @@ public class InformacoesCakes extends AppCompatActivity {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.tudogostoso.com.br/")));
             }
         });
-
+        imgWeb = (ImageView) findViewById(R.id.imgMap);
+        imgWeb.setOnClickListener((View.OnClickListener) v -> {
+            Intent intent = new Intent(getApplicationContext(), AppMaps.class);
+            startActivity(intent);
+        });
 
         //btn do sensor
 

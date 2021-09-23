@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Receita Bolo</string>
+    <string name="title_activity_mapa_app">MapaAPP</string>
+    <string name="title_activity_app_maps">AppMaps</string>
 </resources>
