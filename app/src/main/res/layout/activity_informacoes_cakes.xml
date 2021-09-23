@@ -180,4 +180,16 @@
         app:layout_constraintVertical_bias="0.762"
         app:srcCompat="@drawable/bolovi" />
 
+    <Button
+        android:id="@+id/buttontemp"
+        android:layout_width="262dp"
+        android:layout_height="53dp"
+        android:text="TEMPERATURA AMBIENTE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.811" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,17 @@
 package com.example.receitabolo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +19,7 @@ public class InformacoesCakes extends AppCompatActivity {
 
     private ImageView imgWeb;
     private Button btnWeb;
+    private  Button btnSensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +66,15 @@ public class InformacoesCakes extends AppCompatActivity {
         });
 
 
+        //btn do sensor
 
 
+        Button btnWeb = findViewById(R.id.buttontemp);
 
-
+        btnWeb.setOnClickListener((View.OnClickListener) v -> {
+            Intent intent = new Intent(getApplicationContext(), SensorTemp.class);
+            startActivity(intent);
+        });
 
     }
 }

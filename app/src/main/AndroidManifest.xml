@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReceitaBolo">
-        <activity android:name=".InformacoesCakes"></activity>
+        <activity
+            android:name=".SensorTemp"
+            android:exported="true" />
+        <activity android:name=".InformacoesCakes" />
         <activity android:name=".BoloFuba" />
         <activity android:name=".BoloMilho" />
         <activity android:name=".BoloCenoura" />
