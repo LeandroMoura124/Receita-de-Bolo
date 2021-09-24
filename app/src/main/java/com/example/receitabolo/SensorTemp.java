@@ -71,13 +71,14 @@ public class SensorTemp extends AppCompatActivity implements SensorEventListener
         saveButton = (Button) findViewById(R.id.ButtonSaveAr);
         switch1 = (Switch) findViewById(R.id.switchAr);
 
+        //metodo onclicklistener de enviar dados
         applyTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 textview2.setText(editText2.getText().toString());
             }
         });
-
+        //metodo onclick listener de salvar dados
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,7 +90,7 @@ public class SensorTemp extends AppCompatActivity implements SensorEventListener
         updateViews();
 
     }
-
+// botao salvar dados
     public  void saveData(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor  = sharedPreferences.edit();
