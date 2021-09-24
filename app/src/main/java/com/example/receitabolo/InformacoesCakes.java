@@ -72,7 +72,7 @@ public class InformacoesCakes extends AppCompatActivity {
             startActivity(intent);
         });
 
-        //btn do sensor
+        //btn  que leva pra tela sensor
 
 
         Button btnWeb = findViewById(R.id.buttontemp);
