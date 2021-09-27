@@ -6,4 +6,4 @@ Descrição:  Nesta primeira versão do aplicativo foi desenvolvida uma aplicaç
 
 2º Versão app Receita de Bolo.
 Autores:  Leandro Moura e Leandro Antônio . 2ºAno Desenvolvimento de Sistemas (ETIM).
-Descrição:  Nesta segunda versão do aplicativo foi incrementado sensor de temperatura, gps com permissões de acesso e dados de armazenamento. O sensor de temperatura é alterado de acordo com o manuseio do sensor virtual do emulador, o gps demonstra a localização e como dito antes, requer permissões para o acesso do mapa, e por último dados de armazenamento(desenvolvido com o "shared preferences"), onde é posto um dado usuário e posteriormente armazenado.
+Descrição:  Nesta segunda versão do aplicativo foi incrementado sensor de temperatura, gps com permissões de acesso e dados de armazenamento. O sensor de temperatura é alterado de acordo com o manuseio do sensor virtual do emulador, o gps demonstra a localização e como dito antes, requer permissões para o acesso do mapa, e por último dados de armazenamento, onde o usuário tem a possibilidade de enviar uma mensagem dentro do aplicativo, e a mensagem enviada é armazenada externamente.
