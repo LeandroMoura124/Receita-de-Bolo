@@ -10,6 +10,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,21 +18,32 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class SensorTemp extends AppCompatActivity implements SensorEventListener {
     private TextView textview;
     private SensorManager sensorManager;
     private Sensor tempSensor;
     private  Boolean TemperaturaSensorValida;
 
-    private TextView textview2;
-    private EditText editText2;
-    private Button applyTextButton;
-    private Button saveButton;
-    private Switch switch1;
+// Armazenamento
 
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String TEXT = "text";
-    public static final String SWITCH1 = "switch1";
+    Button btnEnviar, btnSalvar;
+    EditText EditTextAr;
+    TextView tvEnviar;
+    String filename = "";
+    String filepath = "";
+    String filecontent = "";
+
+
+
+
 
     private  String text;
     private Boolean switchOnOff;
@@ -64,54 +76,74 @@ public class SensorTemp extends AppCompatActivity implements SensorEventListener
         }
 
 
-        // Armazenamento
-        textview2 = (TextView) findViewById(R.id.textviewAr);
-        editText2 = (EditText) findViewById(R.id.edittextAr);
-        applyTextButton = (Button) findViewById(R.id.enviar_buttonAr);
-        saveButton = (Button) findViewById(R.id.ButtonSaveAr);
-        switch1 = (Switch) findViewById(R.id.switchAr);
-
-        //metodo onclicklistener de enviar dados
-        applyTextButton.setOnClickListener(new View.OnClickListener() {
+        /*Armazenamento*/
+        btnSalvar = findViewById(R.id.ButtonSalvar);
+        btnEnviar = findViewById(R.id.ButtonEnviar);
+        EditTextAr = findViewById(R.id.EditTextAr);
+        tvEnviar = findViewById(R.id.tvEnviar);
+        filename = "MeuArquivo.txt";
+        filepath = "MeuArquivoDir";
+        if(!isExternalStorageAvailableForRW()){
+            btnSalvar.setEnabled(false);
+        }
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textview2.setText(editText2.getText().toString());
+                tvEnviar.setText("");
+                filecontent = EditTextAr.getText().toString().trim();
+                if(!filecontent.equals("")){
+                    File myExternalFile = new File(getExternalFilesDir(filepath), filename);
+                    FileOutputStream fos = null;
+                    try {
+                        fos = new FileOutputStream(myExternalFile);
+                        fos.write(filecontent.getBytes());
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    EditTextAr.setText("");
+                    Toast.makeText(SensorTemp.this, "As informações foram salvas no cartão SD com sucesso!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(SensorTemp.this, "O campo de texto não pode ser vazio!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-        //metodo onclick listener de salvar dados
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
-
+                FileReader fr = null;
+                File myExternalFile = new File(getExternalFilesDir(filepath), filename);
+                StringBuilder stringBuilder = new StringBuilder();
+                try {
+                    fr = new FileReader(myExternalFile);
+                    BufferedReader br = new BufferedReader(fr);
+                    String line = br.readLine();
+                    while(line != null){
+                        stringBuilder.append(line).append('\n');
+                        line = br.readLine();
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally {
+                    String fileContents = "File contents\n" + stringBuilder.toString();
+                    tvEnviar.setText(fileContents);
+                }
             }
         });
-        loadData();
-        updateViews();
+
 
     }
-// botao salvar dados
-    public  void saveData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor  = sharedPreferences.edit();
 
-        editor.putString(TEXT, textview2.getText().toString());
-        editor.putBoolean(SWITCH1, switch1.isChecked());
-
-        editor.apply();
-        Toast.makeText(this, "Dado salvo", Toast.LENGTH_SHORT).show();
+    private boolean isExternalStorageAvailableForRW() {
+        String extStorageState = Environment.getExternalStorageState();
+        if(extStorageState.equals(Environment.MEDIA_MOUNTED)){
+            return true;
+        }
+        return false;
     }
-    public void loadData(){
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        text  = sharedPreferences.getString(TEXT, "");
-        switchOnOff = sharedPreferences.getBoolean(SWITCH1, false);
-    }
-    public  void updateViews(){
-        textview2.setText(text);
-        switch1.setChecked(switchOnOff);
-    }
-
-
 
 
     //  sensorTemp
